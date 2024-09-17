@@ -3,7 +3,16 @@ if not status_ok then
   return
 end
 
-require('gitsigns').setup {
+local toggle_git_blame_preview = function ()
+  local popup = require('gitsigns.popup')
+  if popup.focus_open('blame') then
+    popup.close('blame')
+  else
+    gitsigns.blame_line()
+  end
+end
+
+gitsigns.setup {
   signs = {
     add          = { text = '┃' },
     change       = { text = '┃' },
@@ -52,4 +61,6 @@ require('gitsigns').setup {
     row = 0,
     col = 1
   },
+
+  vim.keymap.set('n', '-', toggle_git_blame_preview)
 }
