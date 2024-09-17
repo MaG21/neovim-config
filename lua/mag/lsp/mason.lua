@@ -4,6 +4,7 @@ local servers = {
 	"pyright",
 	"jsonls",
   "ruby_lsp",
+  "phpactor"
 }
 
 local settings = {
