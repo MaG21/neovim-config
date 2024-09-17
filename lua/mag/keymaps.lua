@@ -18,20 +18,21 @@ local keymap = vim.api.nvim_set_keymap
 -- keymap("n", "<C-k>", "<C-w>k", opts)
 -- keymap("n", "<C-l>", "<C-w>l", opts)
 
--- GitSigns
-keymap("n", "<leader>b", "<cmd>Gitsigns blame_line<cr>", opts)
 -- ------
 -- Leader Maps
 -- ----
 keymap("n", "<space>", "ci\"", opts)  -- Useful text object to use in normal mode
 keymap("n", "<Leader>c", ":noh<CR>", opts)
-keymap("n", "<leader>e", ":Lex 30<cr>", opts)  -- open file explorer
 keymap("n", "<Leader>o", ":only<CR>", opts) -- Make the current buffer the only visible one if the screen is splitted
 keymap("n", "<Leader>y", '"*yy', opts) -- copy to clipboard
 keymap("v", "<Leader>y", '"*yy', opts)
 -- Telescope
 keymap("n", "<leader>p", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<leader>s", "<cmd>Telescope live_grep<cr>", opts)
+
+-- Nvim Tree 
+keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)  -- open file explorer
+
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
