@@ -170,8 +170,6 @@ local schemas = {
 --   return tab1
 -- end
 
-local extended_schemas = extend(schemas, default_schemas)
-
 local opts = {
   settings = {
     json = {
