@@ -3,6 +3,8 @@ if not status_ok then
   return
 end
 
+-- I don't want to be dragged to the preview window
+-- again, just toggle the preview if present.
 local toggle_git_blame_preview = function ()
   local popup = require('gitsigns.popup')
   if popup.focus_open('blame') then
