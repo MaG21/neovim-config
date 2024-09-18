@@ -21,17 +21,16 @@ local keymap = vim.api.nvim_set_keymap
 -- ------
 -- Leader Maps
 -- ----
-keymap("n", "<space>", "ci\"", opts)  -- Useful text object to use in normal mode
+keymap("n", "<space>", "ci\"", opts)                                -- Useful text object to use in normal mode
 keymap("n", "<Leader>c", ":noh<CR>", opts)
-keymap("n", "<Leader>o", ":only<CR>", opts) -- Make the current buffer the only visible one if the screen is splitted
-keymap("n", "<Leader>y", '"*yy', opts) -- copy to clipboard
-keymap("v", "<Leader>y", '"*yy', opts)
--- Telescope
+keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)           -- open file explorer
+keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<cr>", opts) -- autoformat with detected fixer (ie phpcsfixer)
+keymap("n", "<Leader>o", ":only<CR>", opts)                         -- Make the current buffer the only visible one if the screen is splitted
 keymap("n", "<leader>p", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<leader>s", "<cmd>Telescope live_grep<cr>", opts)
-
--- Nvim Tree 
-keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)  -- open file explorer
+keymap("n", "<leader>t", "<cmd>ToggleTerm<cr>", opts)
+keymap("n", "<Leader>y", '"*yy', opts) -- copy to clipboard
+keymap("v", "<Leader>y", '"*yy', opts)
 
 
 -- Resize with arrows
@@ -60,4 +59,3 @@ keymap("v", "p", '"_dP', opts)
 -- Move text up and down
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
-

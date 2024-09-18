@@ -42,41 +42,41 @@ packer.init {
 return packer.startup(function(use)
   -- Base plugins
   use "wbthomason/packer.nvim" -- Have packer manage itself
-  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  use "nvim-lua/popup.nvim"    -- An implementation of the Popup API from vim in Neovim
+  use "nvim-lua/plenary.nvim"  -- Useful lua functions used ny lots of plugins
 
   use {
     'numToStr/Comment.nvim',
     config = function()
-        require('Comment').setup()
+      require('Comment').setup()
     end
   }
 
   use {
     'nvim-telescope/telescope.nvim',
-    requires = {'nvim-lua/plenary.nvim'}
+    requires = { 'nvim-lua/plenary.nvim' }
   }
 
   -- cmp plugins
-  use "hrsh7th/nvim-cmp" -- The completion plugin
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "hrsh7th/nvim-cmp"         -- The completion plugin
+  use "hrsh7th/cmp-buffer"       -- buffer completions
+  use "hrsh7th/cmp-path"         -- path completions
+  use "hrsh7th/cmp-cmdline"      -- cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-nvim-lua"
 
   -- snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
+  use "L3MON4D3/LuaSnip"             --snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
   -- LSP
-  use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/mason.nvim" -- simple to use language server installer
+  use "neovim/nvim-lspconfig"             -- enable LSP
+  use "williamboman/mason.nvim"           -- simple to use language server installer
   use "williamboman/mason-lspconfig.nvim" -- simple to use language server installer
-  use 'jose-elias-alvarez/null-ls.nvim' -- LSP diagnostics and code actions
+  use 'jose-elias-alvarez/null-ls.nvim'   -- LSP diagnostics and code actions
 
-    -- Treesitter
+  -- Treesitter
   use {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
@@ -92,7 +92,7 @@ return packer.startup(function(use)
   use "tpope/vim-fugitive"
   use "lewis6991/gitsigns.nvim"
 
-  -- nvim-tree 
+  -- nvim-tree
   use {
     "nvim-tree/nvim-tree.lua",
     requires = { 'nvim-tree/nvim-web-devicons' }
@@ -106,6 +106,16 @@ return packer.startup(function(use)
     requires = 'nvim-tree/nvim-web-devicons'
   }
 
+  -- Toggle Term
+  use {
+    "akinsho/toggleterm.nvim",
+    tag = '*'
+  }
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
