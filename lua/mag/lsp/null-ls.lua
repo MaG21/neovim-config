@@ -15,7 +15,7 @@ null_ls.setup({
 		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.stylua,
     diagnostics.flake8,
-    diagnostics.phpcs,
-    formatting.phpcsfixer,
+    diagnostics.phpcs.with({ extra_args = { "--standard=~/.phpcs/phpcs.xml" } }),
+    formatting.phpcbf.with({ extra_args = { "--standard=~/.phpcs/phpcs.xml" } }),
 	},
 })
