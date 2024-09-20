@@ -22,7 +22,7 @@ local keymap = vim.api.nvim_set_keymap
 -- Leader Maps
 -- ----
 keymap("n", "<space>", "ci\"", opts)                                -- Useful text object to use in normal mode
-keymap("n", "<Leader>c", ":noh<CR>", opts)
+keymap("n", "<Leader>c", "<cmd>noh<CR>", opts)
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)           -- open file explorer
 keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<cr>", opts) -- autoformat with detected fixer (ie phpcsfixer)
 keymap("n", "<Leader>o", ":only<CR>", opts)                         -- Make the current buffer the only visible one if the screen is splitted
