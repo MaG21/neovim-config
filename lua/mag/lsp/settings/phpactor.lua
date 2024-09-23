@@ -1,9 +1,7 @@
 return {
   filetypes = { 'php' },
   init_options = {
-    ["language_server_phpstan.enabled"] = true,
-    ["php_code_sniffer.enabled"] = true,
-    ["language_server_psalm.enabled"] = true
+    ["language_server_phpstan.enabled"] = true
   },
   settings = {
     phpactor = {
