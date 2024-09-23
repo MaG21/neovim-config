@@ -32,6 +32,9 @@ keymap("n", "<leader>t", "<cmd>ToggleTerm<cr>", opts)
 keymap("n", "<Leader>y", '"*yy', opts) -- copy to clipboard
 keymap("v", "<Leader>y", '"*yy', opts)
 
+--
+-- NOTE: <space> keymaps are for debugging, take look at nvim-dap.lua
+-- for more information about these mappings
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
