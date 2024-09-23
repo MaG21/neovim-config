@@ -75,7 +75,7 @@ local function lsp_keymaps(bufnr)
   vim.api.nvim_buf_set_keymap(
     bufnr,
     "n",
-    "<leader>c",
+    "<leader>d",
     '<cmd>lua vim.diagnostic.open_float()<CR>',
     opts
   )
