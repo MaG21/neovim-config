@@ -17,18 +17,36 @@ local keymap = vim.api.nvim_set_keymap
 -- keymap("n", "<C-j>", "<C-w>j", opts)
 -- keymap("n", "<C-k>", "<C-w>k", opts)
 -- keymap("n", "<C-l>", "<C-w>l", opts)
-
+--
 -- ------
 -- Leader Maps
 -- ----
-keymap("n", "<space>", "ci\"", opts)                                -- Useful text object to use in normal mode
+
+-- Leader t (terminal)
+--
+local status_ok, term = pcall(require, "toggleterm.terminal")
+if status_ok then
+	local Terminal = term.Terminal
+
+  local termcmd = function (cmd)
+    return function ()
+      Terminal:new({ cmd = cmd, hidden = true }):toggle()
+    end
+  end
+
+  keymap("n", "<leader>te", "<cmd>ToggleTerm<cr>", opts)
+  vim.keymap.set('n', "<leader>tr", termcmd('irb'))
+  vim.keymap.set('n', "<leader>tp", termcmd('python'))
+  vim.keymap.set('n', "<leader>th", termcmd('php artisan tinker'))
+end
+
+keymap("n", "<space>", 'ci"', opts) -- Useful text object to use in normal mode
 keymap("n", "<Leader>c", "<cmd>noh<CR>", opts)
-keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)           -- open file explorer
+keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts) -- open file explorer
 keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<cr>", opts) -- autoformat with detected fixer (ie phpcsfixer)
-keymap("n", "<Leader>o", ":only<CR>", opts)                         -- Make the current buffer the only visible one if the screen is splitted
+keymap("n", "<Leader>o", ":only<CR>", opts) -- Make the current buffer the only visible one if the screen is splitted
 keymap("n", "<leader>p", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<leader>s", "<cmd>Telescope live_grep<cr>", opts)
-keymap("n", "<leader>t", "<cmd>ToggleTerm<cr>", opts)
 keymap("n", "<Leader>y", '"*yy', opts) -- copy to clipboard
 keymap("v", "<Leader>y", '"*yy', opts)
 
@@ -42,18 +60,13 @@ keymap("n", "<C-Down>", ":resize -2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
--- Visual --
--- Stay in visual mode after indenting
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
-
 -- Move text up and down
 -- NOTE: for this to work you may need to change the way alt is interpreted
 -- by the terminal
-keymap("n", "<A-k>", ":m .-2<CR>", opts)
-keymap("n", "<A-j>", ":m .+1<CR>", opts)
-keymap("v", "<A-k>", ":m .-2<CR>=gv", opts)
-keymap("v", "<A-j>", ":m .+1<CR>=gv", opts)
+-- keymap("n", "<A-k>", ":m .-2<CR>", opts)
+-- keymap("n", "<A-j>", ":m .+1<CR>", opts)
+-- keymap("v", "<A-k>", ":m .-2<CR>=gv", opts)
+-- keymap("v", "<A-j>", ":m .+1<CR>=gv", opts)
 
 -- All the substitution I do from visual don't ruin my register
 keymap("v", "p", '"_dP', opts)
