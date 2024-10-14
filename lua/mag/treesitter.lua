@@ -13,6 +13,7 @@ configs.setup {
     "c",
     "cpp",
     "css",
+    "terraform",
     "yaml"
   },
   sync_install = false,

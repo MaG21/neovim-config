@@ -75,7 +75,3 @@ if status_ok_dap_ui then
 	end)
 end
 
-local status_ok_dap_v_text, dapvtext = pcall(require, "nvim-dap-virtual-text")
-if status_ok_dap_v_text then
-	dapvtext.setup()
-end

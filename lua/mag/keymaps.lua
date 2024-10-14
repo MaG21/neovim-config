@@ -40,12 +40,33 @@ if status_ok then
   vim.keymap.set('n', "<leader>th", termcmd('php artisan tinker'))
 end
 
+local status, telescope_builtin = pcall(require, "telescope.builtin")
+if status then
+  local function is_git_repo()
+		vim.fn.system("git rev-parse --is-inside-work-tree")
+
+		return vim.v.shell_error == 0
+	end
+
+  -- If possible, use Telescope with the Git root as the search directory
+  vim.keymap.set('n', "<leader>p", function ()
+    local params = {}
+    if is_git_repo() then
+      params = {
+        prompt_title = "Files in Git Root",
+        cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+      }
+    end
+
+    telescope_builtin.find_files(params)
+  end)
+
+end
 keymap("n", "<space>", 'ci"', opts) -- Useful text object to use in normal mode
 keymap("n", "<Leader>c", "<cmd>noh<CR>", opts)
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts) -- open file explorer
 keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<cr>", opts) -- autoformat with detected fixer (ie phpcsfixer)
 keymap("n", "<Leader>o", ":only<CR>", opts) -- Make the current buffer the only visible one if the screen is splitted
-keymap("n", "<leader>p", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<leader>s", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<Leader>y", '"*yy', opts) -- copy to clipboard
 keymap("v", "<Leader>y", '"*yy', opts)
