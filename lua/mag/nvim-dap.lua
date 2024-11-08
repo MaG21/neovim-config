@@ -19,11 +19,10 @@ dap.configurations.php = {
 }
 
 local keymap = vim.keymap.set
-keymap("n", "<CR>", dap.toggle_breakpoint)
 keymap("n", "<space>c", dap.continue)
 keymap("n", "<space>,", dap.step_over)
 keymap("n", "<space>.", dap.step_into)
-keymap("n", "<space>b", dap.step_back)
+keymap("n", "<space>b", dap.toggle_breakpoint)
 keymap("n", "<space>r", dap.repl.open)
 
 local dap_widgets = require("dap.ui.widgets")
