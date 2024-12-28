@@ -17,6 +17,5 @@ null_ls.setup({
     diagnostics.flake8,
     diagnostics.phpcs.with({ extra_args = { "--standard=~/.phpcs/phpcs.xml" } }),
     formatting.phpcbf.with({ extra_args = { "--standard=~/.phpcs/phpcs.xml" } }),
-    diagnostics.tfsec,
-	},
+  },
 })
