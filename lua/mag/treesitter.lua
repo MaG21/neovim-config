@@ -1,5 +1,7 @@
 local configs = require("nvim-treesitter.configs")
 configs.setup {
+  modules = {},
+  auto_install = true,
   ensure_installed =  {
     "lua",
     "markdown",
