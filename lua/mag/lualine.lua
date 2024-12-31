@@ -9,11 +9,11 @@ end
 
 local diagnostics = {
 	"diagnostics",
-	sources = { "nvim_diagnostic" },
+	sources = { "nvim_lsp" },
 	sections = { "error", "warn" },
 	symbols = { error = " ", warn = " " },
 	colored = false,
-	update_in_insert = false,
+	update_in_insert = true,
 	always_visible = true,
 }
 
@@ -27,6 +27,11 @@ local diff = {
 local mode = {
 	"mode",
 	fmt = function(str)
+    if str == 'INSERT' then
+      if vim.g.globals.is_copilot_enabled() then
+        return "-- " .. str .. " (Copilot) --"
+      end
+    end
 		return "-- " .. str .. " --"
 	end,
 }
@@ -70,7 +75,7 @@ lualine.setup({
 	sections = {
 		lualine_a = { branch, diagnostics },
 		lualine_b = { mode },
-		lualine_c = {},
+		lualine_c = { diff },
 		lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_y = { location },
 		lualine_z = { progress },
