@@ -4,10 +4,8 @@ if not status then
 end
 
 -- Snacks is the tool I will be using for notification and other
--- things, snack will not be used directly but instead exposed
+-- things, snacks will not be used directly but instead exposed
 -- through a global functionality.
-
--- Keymaps (I need help organizing my mappings)
 
 -- Configure snacks here since the plan is not to use it elsewhere.
 snacks.setup({
@@ -25,11 +23,11 @@ snacks.setup({
     sections = {
       {
         section = "terminal",
-        cmd = "ascii-image-converter -C -c " .. "img/neovim.png",
+        cmd = "cat " .. vim.fn.stdpath('config') .. "/img/logo",
         random = 1,
         pane = 1,
-        indent = 1,
-        height = 30
+        indent = 2,
+        height = 20
       },
       { section = "recent_files", limit = 7, padding = 1 },
     },
