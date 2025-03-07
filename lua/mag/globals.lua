@@ -29,7 +29,6 @@ snacks.setup({
         indent = 2,
         height = 20
       },
-      { section = "recent_files", limit = 7, padding = 1 },
     },
   },
   notifier = {

@@ -22,11 +22,14 @@ local keymap = vim.api.nvim_set_keymap
 -- Leader Maps
 -- ----
 
+vim.keymap.set('n', '<leader>z', function()
+  vim.fn.system('pbcopy', vim.fn.expand('%:p'))
+end, { noremap = true, silent = true })
+
 -- Snacks
 
 local snacks_exists, snacks = pcall(require, "snacks")
 if snacks_exists then
-  vim.keymap.set("n", "<leader>z", function() snacks.zen() end, opts)
   vim.keymap.set("n", "<leader>.",  function() snacks.scratch() end, opts)
   vim.keymap.set("n", "<leader>S",  function() snacks.scratch.select() end, opts)
   vim.keymap.set("n", "<leader>n",  function() snacks.notifier.show_history() end, opts)
@@ -34,7 +37,6 @@ if snacks_exists then
   vim.keymap.set("n", "<leader>cR", function() snacks.rename.rename_file() end, opts)
   vim.keymap.set("n", "<leader>gB", function() snacks.gitbrowse({what="commit"}) end, opts)
   vim.keymap.set("n", "<leader>gb", function() snacks.git.blame_line() end, opts)
-  vim.keymap.set("n", "<leader>un", function() snacks.notifier.hide() end, opts)
 
   vim.keymap.set("n", "]]", function() snacks.words.jump(vim.v.count1) end, opts)
   vim.keymap.set("t", "]]", function() snacks.words.jump(vim.v.count1) end, opts)
@@ -77,7 +79,7 @@ keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts) -- open file explorer
 keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.format()<cr>", opts) -- autoformat with detected fixer (ie phpcsfixer)
 keymap("n", "<Leader>o", ":only<CR>", opts) -- Make the current buffer the only visible one if the screen is splitted
 keymap("n", "<Leader>y", '"*yy', opts) -- copy to clipboard
-keymap("v", "<Leader>y", '"*yy', opts)
+keymap("v", "<Leader>y", '"*y', opts)
 
 --
 -- NOTE: <space> keymaps are for debugging, take look at nvim-dap.lua
