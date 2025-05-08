@@ -25,16 +25,6 @@ null_ls.setup({
       },
 		}),
 		formatting.stylua,
-		diagnostics.flake8.with({
-			extra_args = {
-				"--max-line-length",
-				"120",
-				"--exclude",
-				".git,__pycache__,docs/source/conf.py,old,build,dist",
-				"--max-complexity",
-				"25",
-			},
-		}),
 		diagnostics.pylint.with({
 			extra_args = {
 				"--good-names=i,j,k,ex,Run,_,id",
@@ -44,8 +34,6 @@ null_ls.setup({
 				"--extension-pkg-allow-list",
 				"dependency_injector",
 			},
-		}),
-		diagnostics.phpcs.with({ extra_args = { "--standard=~/.phpcs/phpcs.xml" } }),
-		formatting.phpcbf.with({ extra_args = { "--standard=~/.phpcs/phpcs.xml" } }),
+		})
 	},
 })

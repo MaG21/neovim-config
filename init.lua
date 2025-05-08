@@ -15,9 +15,10 @@ vim.g.globals = globals
 -- Plugins
 -- Make sure that globals is set after this point
 
+
+require 'mag.lsp'
 require 'mag.keymaps'
 require 'mag.cmp'
-require 'mag.lsp'
 require 'mag.telescope'
 require 'mag.treesitter'
 require 'mag.gitsigns'
@@ -26,3 +27,4 @@ require 'mag.bufferline'
 require 'mag.lualine'
 require 'mag.nvim-dap'
 require 'mag.copilot-config'
+require 'mag.mason'
